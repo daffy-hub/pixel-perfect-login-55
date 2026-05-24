@@ -17,9 +17,13 @@ function LoginOptionsPage() {
       <div className="w-full max-w-md flex flex-col bg-white relative pb-32">
         {/* Header */}
         <header className="flex items-center justify-between px-5 pt-4 pb-2">
-          <button aria-label="Close" className="p-1 -ml-1 text-neutral-900 active:opacity-60">
-            <X className="w-7 h-7" strokeWidth={2} />
-          </button>
+          <Link
+            to="/"
+            aria-label="Back"
+            className="p-1 -ml-1 text-neutral-900 active:opacity-60"
+          >
+            <ChevronLeft className="w-7 h-7" strokeWidth={2.25} />
+          </Link>
           <button
             aria-label="Help"
             className="w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center text-neutral-700 active:opacity-60"
