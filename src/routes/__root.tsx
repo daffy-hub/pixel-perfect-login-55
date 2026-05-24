@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "tiktok login" },
+      { name: "description", content: "Builds a pixel-perfect, mobile-responsive login page mirroring a modern app interface." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "tiktok login" },
+      { property: "og:description", content: "Builds a pixel-perfect, mobile-responsive login page mirroring a modern app interface." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "tiktok login" },
+      { name: "twitter:description", content: "Builds a pixel-perfect, mobile-responsive login page mirroring a modern app interface." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c581da09-511d-4ad3-9cb0-2ef6e75ac665/id-preview-43065304--258f76ab-5476-40a5-92eb-7d355d55c231.lovable.app-1779631722036.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c581da09-511d-4ad3-9cb0-2ef6e75ac665/id-preview-43065304--258f76ab-5476-40a5-92eb-7d355d55c231.lovable.app-1779631722036.png" },
     ],
     links: [
       {
