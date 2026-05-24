@@ -31,12 +31,13 @@ function LoginPage() {
       <div className="w-full max-w-md flex flex-col bg-white">
         {/* Header */}
         <header className="relative flex items-center justify-between px-4 h-14">
-          <button
+          <Link
+            to="/"
             aria-label="Back"
             className="p-1 -ml-1 text-neutral-900 active:opacity-60"
           >
             <ChevronLeft className="w-7 h-7" strokeWidth={2.25} />
-          </button>
+          </Link>
           <h1 className="absolute left-1/2 -translate-x-1/2 text-[17px] font-semibold text-neutral-900">
             Log in
           </h1>
