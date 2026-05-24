@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LoginPhoneRouteImport } from './routes/login.phone'
+import { Route as LoginGoogleRouteImport } from './routes/login.google'
+import { Route as LoginFacebookRouteImport } from './routes/login.facebook'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginPhoneRoute = LoginPhoneRouteImport.update({
+  id: '/login/phone',
+  path: '/login/phone',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginGoogleRoute = LoginGoogleRouteImport.update({
+  id: '/login/google',
+  path: '/login/google',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginFacebookRoute = LoginFacebookRouteImport.update({
+  id: '/login/facebook',
+  path: '/login/facebook',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/login/facebook': typeof LoginFacebookRoute
+  '/login/google': typeof LoginGoogleRoute
+  '/login/phone': typeof LoginPhoneRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login/facebook': typeof LoginFacebookRoute
+  '/login/google': typeof LoginGoogleRoute
+  '/login/phone': typeof LoginPhoneRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/login/facebook': typeof LoginFacebookRoute
+  '/login/google': typeof LoginGoogleRoute
+  '/login/phone': typeof LoginPhoneRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/login/facebook' | '/login/google' | '/login/phone'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/login/facebook' | '/login/google' | '/login/phone'
+  id: '__root__' | '/' | '/login/facebook' | '/login/google' | '/login/phone'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LoginFacebookRoute: typeof LoginFacebookRoute
+  LoginGoogleRoute: typeof LoginGoogleRoute
+  LoginPhoneRoute: typeof LoginPhoneRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login/phone': {
+      id: '/login/phone'
+      path: '/login/phone'
+      fullPath: '/login/phone'
+      preLoaderRoute: typeof LoginPhoneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login/google': {
+      id: '/login/google'
+      path: '/login/google'
+      fullPath: '/login/google'
+      preLoaderRoute: typeof LoginGoogleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login/facebook': {
+      id: '/login/facebook'
+      path: '/login/facebook'
+      fullPath: '/login/facebook'
+      preLoaderRoute: typeof LoginFacebookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LoginFacebookRoute: LoginFacebookRoute,
+  LoginGoogleRoute: LoginGoogleRoute,
+  LoginPhoneRoute: LoginPhoneRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
