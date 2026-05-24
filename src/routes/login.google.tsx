@@ -13,7 +13,14 @@ function GoogleLoginPage() {
   const [email, setEmail] = useState("");
 
   return (
-    <div className="min-h-screen w-full bg-white flex justify-center items-start sm:items-center sm:bg-[#f1f3f4]">
+    <div className="min-h-screen w-full bg-white flex justify-center items-start sm:items-center sm:bg-[#f1f3f4] relative">
+      <Link
+        to="/"
+        aria-label="Back"
+        className="absolute top-4 left-4 p-1 text-neutral-900 active:opacity-60 sm:hidden"
+      >
+        <ChevronLeft className="w-7 h-7" strokeWidth={2.25} />
+      </Link>
       <div className="w-full max-w-[450px] bg-white sm:rounded-[28px] sm:border sm:border-neutral-200 px-10 sm:px-12 py-10">
         {/* Google logo */}
         <div className="flex justify-start">
