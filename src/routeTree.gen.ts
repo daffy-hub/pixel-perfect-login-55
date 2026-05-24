@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LoginPhoneRouteImport } from './routes/login.phone'
 import { Route as LoginGoogleRouteImport } from './routes/login.google'
+import { Route as LoginFacebookRouteImport } from './routes/login.facebook'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,33 +29,42 @@ const LoginGoogleRoute = LoginGoogleRouteImport.update({
   path: '/login/google',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginFacebookRoute = LoginFacebookRouteImport.update({
+  id: '/login/facebook',
+  path: '/login/facebook',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/login/facebook': typeof LoginFacebookRoute
   '/login/google': typeof LoginGoogleRoute
   '/login/phone': typeof LoginPhoneRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login/facebook': typeof LoginFacebookRoute
   '/login/google': typeof LoginGoogleRoute
   '/login/phone': typeof LoginPhoneRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/login/facebook': typeof LoginFacebookRoute
   '/login/google': typeof LoginGoogleRoute
   '/login/phone': typeof LoginPhoneRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login/google' | '/login/phone'
+  fullPaths: '/' | '/login/facebook' | '/login/google' | '/login/phone'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login/google' | '/login/phone'
-  id: '__root__' | '/' | '/login/google' | '/login/phone'
+  to: '/' | '/login/facebook' | '/login/google' | '/login/phone'
+  id: '__root__' | '/' | '/login/facebook' | '/login/google' | '/login/phone'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LoginFacebookRoute: typeof LoginFacebookRoute
   LoginGoogleRoute: typeof LoginGoogleRoute
   LoginPhoneRoute: typeof LoginPhoneRoute
 }
@@ -82,11 +92,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginGoogleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login/facebook': {
+      id: '/login/facebook'
+      path: '/login/facebook'
+      fullPath: '/login/facebook'
+      preLoaderRoute: typeof LoginFacebookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LoginFacebookRoute: LoginFacebookRoute,
   LoginGoogleRoute: LoginGoogleRoute,
   LoginPhoneRoute: LoginPhoneRoute,
 }
