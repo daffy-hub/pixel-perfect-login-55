@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, HelpCircle, ChevronDown, X } from "lucide-react";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/login/phone")({
   component: LoginPage,
   head: () => ({
     meta: [
