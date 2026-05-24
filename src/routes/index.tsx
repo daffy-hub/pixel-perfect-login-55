@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { X, HelpCircle, User } from "lucide-react";
+import { ChevronLeft, HelpCircle, User } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: LoginOptionsPage,
