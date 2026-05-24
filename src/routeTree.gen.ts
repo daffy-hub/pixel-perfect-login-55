@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LoginPhoneRouteImport } from './routes/login.phone'
+import { Route as LoginGoogleRouteImport } from './routes/login.google'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,30 +23,39 @@ const LoginPhoneRoute = LoginPhoneRouteImport.update({
   path: '/login/phone',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginGoogleRoute = LoginGoogleRouteImport.update({
+  id: '/login/google',
+  path: '/login/google',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/login/google': typeof LoginGoogleRoute
   '/login/phone': typeof LoginPhoneRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login/google': typeof LoginGoogleRoute
   '/login/phone': typeof LoginPhoneRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/login/google': typeof LoginGoogleRoute
   '/login/phone': typeof LoginPhoneRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login/phone'
+  fullPaths: '/' | '/login/google' | '/login/phone'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login/phone'
-  id: '__root__' | '/' | '/login/phone'
+  to: '/' | '/login/google' | '/login/phone'
+  id: '__root__' | '/' | '/login/google' | '/login/phone'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LoginGoogleRoute: typeof LoginGoogleRoute
   LoginPhoneRoute: typeof LoginPhoneRoute
 }
 
@@ -65,11 +75,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginPhoneRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login/google': {
+      id: '/login/google'
+      path: '/login/google'
+      fullPath: '/login/google'
+      preLoaderRoute: typeof LoginGoogleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LoginGoogleRoute: LoginGoogleRoute,
   LoginPhoneRoute: LoginPhoneRoute,
 }
 export const routeTree = rootRouteImport
