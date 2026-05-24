@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ChevronLeft } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/login/facebook")({
@@ -13,7 +14,14 @@ function FacebookLoginPage() {
   const [password, setPassword] = useState("");
 
   return (
-    <div className="min-h-screen w-full bg-[#f0f2f5] flex flex-col items-center pt-16 px-4">
+    <div className="min-h-screen w-full bg-[#f0f2f5] flex flex-col items-center pt-16 px-4 relative">
+      <Link
+        to="/"
+        aria-label="Back"
+        className="absolute top-4 left-4 p-1 text-neutral-900 active:opacity-60"
+      >
+        <ChevronLeft className="w-7 h-7" strokeWidth={2.25} />
+      </Link>
       {/* Facebook logo */}
       <div className="text-[#1877F2] text-[60px] font-bold leading-none tracking-tight" style={{ fontFamily: "Helvetica, Arial, sans-serif" }}>
         facebook
